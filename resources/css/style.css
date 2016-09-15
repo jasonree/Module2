@@ -310,7 +310,16 @@ nav #menu-toggle {
 
 
 /* Content Styles */
-section.vibrant { background: #3e3e3e; color: #fff; text-align: center;}
+section.vibrant { 
+    background: #3e3e3e; 
+    color: #fff; 
+    text-align: center;
+    width:100%;
+	height:100px;
+	position:absolute;
+	bottom:0;
+	left:0;
+    }
 
 nav:before, 
 nav:after, 
