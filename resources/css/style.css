@@ -302,15 +302,15 @@ nav #menu-toggle {
 
 
 
-section.vibrant { 
-    background: #3e3e3e; 
-    color: #fff; 
-    text-align: center;
-    width:100%;
-	position:absolute;
-	bottom:0;
-	left:0;
-    }
+
+
+
+
+
+
+
+/* Content Styles */
+section.vibrant { background: #3e3e3e; color: #fff; text-align: center;}
 
 nav:before, 
 nav:after, 
@@ -396,11 +396,22 @@ input:focus {
 
     .body-content {
 		margin: 60px 0px;
-        padding-left: 400px;
+        padding-left: 320px;
     }
 
     input {
         display: inline-block;
+        padding: 10px 0px;
+    }
+
+    #inputOne {
+        height: 200px;
+    }
+
+    #final {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
     }
 
 

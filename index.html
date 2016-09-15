@@ -1,73 +1,163 @@
-﻿<!DOCTYPE html>
-<html>
+﻿  <!DOCTYPE html>
+  <html>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Weather App
-  </title>
-  <link href="http://fonts.googleapis.com/css?family=Raleway:700,600,500,400,300" rel="stylesheet" type="text/css">
-  <link href='http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' />
-  <link rel="stylesheet" href="resources/css/style.css">
-  <link rel="stylesheet" href="resources/css/jquery-ui.css">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Weather App
+    </title>
+    <link href="http://fonts.googleapis.com/css?family=Raleway:700,600,500,400,300" rel="stylesheet" type="text/css">
+    <link href='http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' />
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/jquery-ui.css">
+    
+    
 
-</head>
+  </head>
 
-<body>
-  <nav>
-    <div class="container">
-      <div class="website-logo"><img src="resources/images/MYS2.png" /></div>
-      <div id="menu">
-        <ul class="toplinks">
-          <li><a href="">App Details</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <header>
-    <h2> <strong> Getting Started </strong></h2>
-  </header>
-  <section>
-    <div class="container">
-      <ul class="docs-nav" id="menu-left">
-        <li><strong>Navigation Bar</strong></li>
-        <li><a href="#Theme_Info" class=" ">Weather App</a></li>
-        <li><a href="#Features" class=" ">API website</a></li>
-      </ul>
-      <div class="body-content">
-        <h3> Enter the name of your city and then press Go!</h3>
-
-        <div class="ui-widget">
-          <form>
-            <label for="city">Enter your city: </label>
-            <input id="city">
-            <button type="button" id="goButton">Go!</button>
-          </form>
+  <body onload="coodinates()">
+    <nav>
+      <div class="container">
+        <div class="website-logo"><img src="resources/images/MYS2.png" /></div>
+        <div id="menu">
+          <ul class="toplinks">
+            <li><a href="">App Details</a></li>
+          </ul>
         </div>
-
       </div>
-    </div>
-  </section>
+    </nav>
+    <header>
+      <h2> <strong> Find your distance! </strong></h2>
+    </header>
+    <section>
+      <div class="container">
+        <ul class="docs-nav" id="menu-left">
+          <li><strong>Navigation Bar</strong></li>
+          <li><a href="index.html" class=" ">Distance App</a></li>
+          <li><a href="https://developers.google.com/maps/documentation/geocoding/intro" class=" ">API website</a></li>
+        </ul>
+        <div class="body-content">
+          <h3> Enter the name of 2 cities and then press Go!</h3>
 
-  <footer>
-    <section class="vibrant">
-      <h4> Web App By Jason Lee </h4>
+          <div class="ui-widget">
+            <form id = "inputOne">
+              <label for="city">Enter name of city 1: </label>
+              <input id="city">
+              <button type="input" id="goButton">Go!</button>
+            </form>
+            <h3 class = "xyz"> </h3>
+          </div>
+
+            <div class="ui-widget">
+            <form id = "inputTwo">
+              <label for="cityT">Enter name of city 2: </label>
+              <input id="cityT">
+              <button type="input" id="btn2" value="Button Two">Go!</button>
+            </form>
+            <h3 class = "xyzT"> </h3>
+          </div>
+
+          <h2 class = "distanceHurah" > </h2>
+
+        </div>
+      </div>
     </section>
-  </footer>
 
-  <a class="totop" href="#">Top</a>
+    
 
-  <script src="resources/js/jquery-3.1.0.min.js"></script>
-  <script src="resources/js/layout.js"></script>
-  <script src="resources/js/jquery.localscroll-1.2.7.js"></script>
-  <script src="resources/js/top.js"></script>
-  <script src="resources/js/jquery-ui.js"></script>
-  <script src="resources/js/autocomplete.js"></script>
-  <script src="main.js"></script>
 
-</body>
 
-</html>
+    <a class="totop" href="#">Top</a>
+
+    <script src="resources/js/jquery-3.1.0.min.js"></script>
+    <script src="resources/js/layout.js"></script>
+    <script src="resources/js/jquery.localscroll-1.2.7.js"></script>
+    <script src="resources/js/jquery-ui.js"></script>
+    <script src="resources/js/autocomplete.js"></script>
+    <script src="main.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    
+    <script type="text/javascript">
+
+
+
+
+  var latsT=0;
+      var longT=0;
+          var latsT=0;
+      var longT=0;
+    function coodinates(){
+    $("#goButton").click(function(){
+
+      var geoC =  new google.maps.Geocoder();
+      geoC.geocode( { 'address': $('#city').val()}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+            lats = results[0].geometry.location.lat();
+            long = results[0].geometry.location.lng();
+            } else {
+              $('.xyz').text("An error occured due to: " + status);
+            }
+            alert(long);
+      if (lats != 0 && long != 0 && latsT != 0 && longT != 0) {
+       
+              $('.distanceHurah').text(""+calcDistance(latsT, longT, lats, long);); 
+            } 
+          });
+  });
+  }
+
+
+
+  var btn2 = document.getElementById('btn2');
+  btn2.addEventListener('click', show_me, false);
+
+  function show_me() {
+  $("#btn2").click(function(){
+      var geoCT =  new google.maps.Geocoder();
+      geoCT.geocode( { 'address': $('#cityT').val()}, function(resultsT, statusT) {
+            if (statusT == google.maps.GeocoderStatus.OK) {
+              latsT = resultsT[0].geometry.location.lat();
+              longT = resultsT[0].geometry.location.lng();
+              alert(longT);
+            } else {
+              $('.xyzT').text("An error occured due to: " + statusT);
+            }
+            if (lats != 0 && long != 0 && latsT != 0 && longT != 0) {
+            
+              $('.distanceHurah').text(""+calcDistance(latsT, longT, lats, long);); 
+            } 
+        
+            
+          });
+  });
+  }
+
+  function calcDistance(latsT, longT, lats, long) 
+      {
+        var R = 6371; 
+        var dLat = toRad(lats-latsT);
+        var dLon = toRad(long-longT);
+        var lat1 = toRad(latsT);
+        var lat2 = toRad(lats);
+
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(latsT) * Math.cos(lats); 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var d = R * c;
+        return d;
+      }
+      function toRad(Value) 
+      {
+          var newD = Value* Math.PI / 180;
+          return newD;
+      }
+
+
+  </script>
+
+  </body>
+
+  </html>
