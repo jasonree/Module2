@@ -302,14 +302,6 @@ nav #menu-toggle {
 
 
 
-
-
-
-
-
-
-
-/* Content Styles */
 section.vibrant { 
     background: #3e3e3e; 
     color: #fff; 
@@ -404,7 +396,7 @@ input:focus {
 
     .body-content {
 		margin: 60px 0px;
-        padding-left: 320px;
+        padding-left: 350px;
     }
 
     input {
